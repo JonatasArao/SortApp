@@ -7,6 +7,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="msapplication-tap-highlight" content="no">
     <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <script src="js/jquery-3.4.1.min.js"></script>
@@ -17,9 +18,9 @@
     <title>SortApp</title>
 </head>
 
-<body>
+<body class="bg-blue-grey-lighten-5">
 
-    <div class="py-3 bg-dark container">
+    <div class="py-3 bg-dark container-fluid">
         <a class="text-decoration-none" href="#">
             <h2 class="text-white text-center">SortApp</h2>
         </a>
@@ -28,21 +29,18 @@
     <section class="mt-3 container">
 
         <div class="row">
-            <button type="button" class="mx-auto btn btn-secondary" data-toggle="modal" id="btnCadastrarModalPessoa" data-target="#cadastrarModalPessoa">
-                Cadastrar Pessoas
+            <button type="button" class="rounded-pill mx-auto btn btn-secondary btn-acao text-center" data-toggle="modal" id="btnCadastrarModalPessoa" data-target="#cadastrarModalPessoa">
+                <i class="fas fa-user-plus"></i>
+                <p>Adicionar<br>Pessoa</p>
             </button>
-        </div>
-
-        <div class="row mt-3">
-            <button type="button" class="mx-auto btn btn-secondary" data-toggle="modal" id="btnMostrarPessoas" data-target="#mostrarPessoas">
-                Mostrar Pessoas
+            <button type="button" class="rounded-pill mx-auto btn btn-secondary btn-acao text-center" data-toggle="modal" id="btnMostrarPessoas" data-target="#mostrarPessoas">
+                <i class="fas fa-users"></i>
+                <p>Ver<br>Pessoas</p>
             </button>
-        </div>
-
-        <div class="row mt-3">
-            <button type="button" class="mx-auto btn btn-secondary" data-toggle="modal" id="btnSorteio" data-target="#sorteio">
-                Sortear
-            </button>
+            <button type="button" class="rounded-pill mx-auto btn btn-secondary btn-acao text-center" data-toggle="modal" id="btnSorteio" data-target="#sorteio">
+                <i class="fas fa-envelope-open-text"></i>
+                <p>Sortear<br>Pessoa</p>
+            </button>  
         </div>
 
         <div class="modal fade" id="cadastrarModalPessoa" tabindex="-1" role="dialog" aria-labelledby="cadastrarPessoaTitle"
@@ -50,7 +48,7 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="cadastrarPessoaTitle">Cadastrar Pessoa</h5>
+                        <h5 class="modal-title" id="cadastrarPessoaTitle">Adicionar Pessoa</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -73,7 +71,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal" id="cadastrarPessoa">Cadastrar</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal" id="cadastrarPessoa">Adicionar</button>
                     </div>
                 </div>
             </div>
@@ -94,6 +92,8 @@
                         </div>
                     </div>
                     <div class="modal-footer">
+                        <button type="button" id="btnCarregarPessoas" class="btn btn-primary" data-dismiss="modal">Carregar</button>
+                        <button type="button" id="btnSalvarPessoas" class="btn btn-success" data-dismiss="modal">Salvar</button>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                     </div>
                 </div>

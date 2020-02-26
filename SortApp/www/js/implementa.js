@@ -2,8 +2,11 @@
 var SortApp;
 (function (SortApp) {
     document.addEventListener('DOMContentLoaded', function () {
+        // Instanciando Classe de Sorteio
         var Sorteador = new SortApp.Sorteio;
+        // Botão - Cadastrar Pessoa
         var cadastrarPessoa = document.getElementById("cadastrarPessoa");
+        // Ação - Cadastrar Pessoa
         cadastrarPessoa.addEventListener('click', function () {
             var nome = document.getElementById('nomePessoa').value;
             var idade = document.getElementById('idadePessoa').value;
@@ -11,13 +14,17 @@ var SortApp;
             var pessoa = new SortApp.Pessoa(nome, parseInt(idade), perfil);
             Sorteador.addPessoa(pessoa);
         });
+        // Botão - Modal Cadastrar Pessoa
         var btnCadastrarModalPessoa = document.getElementById("btnCadastrarModalPessoa");
+        // Ação - Modal Cadastrar Pessoa
         btnCadastrarModalPessoa.addEventListener('click', function () {
             document.getElementById('nomePessoa').value = '';
             document.getElementById('idadePessoa').value = '';
             document.getElementById('perfilPessoa').value = '';
         });
+        // Botão - Mostrar Pessoas
         var mostrarPessoas = document.getElementById("btnMostrarPessoas");
+        // Ação - Mostrar Pessoas
         mostrarPessoas.addEventListener('click', function () {
             var mostrandoPessoas = document.getElementById('mostrandoPessoas');
             var pessoas = Sorteador.getPessoas();
@@ -32,7 +39,28 @@ var SortApp;
                 mostrandoPessoas.innerHTML = "\n                <a href=\"#\" class=\"list-group-item list-group-item-action\">\n                    <div class=\"d-flex w-100 justify-content-between\">\n                        <h5 class=\"mb-1\">Cadastre pelo menos uma pessoa</h5>\n                    </div>\n                </a>\n                ";
             }
         });
+        // Botão - Salvar Pessoas
+        var salvarPessoas = document.getElementById('btnSalvarPessoas');
+        // Ação - Salvar Pessoas
+        salvarPessoas.addEventListener('click', function () {
+            localStorage.setItem('listaPessoas', JSON.stringify(Sorteador.getPessoas()));
+        });
+        // Botão - Carregar Pessoas
+        var carregarPessoas = document.getElementById('btnCarregarPessoas');
+        // Ação - Carregar Pessoas
+        carregarPessoas.addEventListener('click', function () {
+            var pessoasString = localStorage.getItem('listaPessoas');
+            if (pessoasString != null) {
+                var pessoasArray = JSON.parse(pessoasString);
+                pessoasArray.forEach(function (pessoaArray) {
+                    var pessoa = new SortApp.Pessoa(pessoaArray.nome, parseInt(pessoaArray.idade), pessoaArray.perfil);
+                    Sorteador.addPessoa(pessoa);
+                });
+            }
+        });
+        // Botão - Sorteio de Pessoas
         var sorteio = document.getElementById('btnSorteio');
+        // Ação - Sorteio de Pessoas
         sorteio.addEventListener('click', function () {
             var pessoaSorteadaHeading = document.getElementById('pessoaSorteada');
             if (Sorteador.sortearPessoa()) {
