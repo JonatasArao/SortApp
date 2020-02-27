@@ -39,7 +39,7 @@ namespace SortApp {
                         <small class="text-muted">` + pessoa.getIdade() + ` ano(s)</small>
                     </div>
                     <div class="d-flex w-100 justify-content-between">
-                        <p class="mb-1">
+                        <p class="mb-1 mostraPerfil">
                             ` + pessoa.getPerfil() + `
                         </p>
                         <div>
