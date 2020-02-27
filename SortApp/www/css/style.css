@@ -1,6 +1,7 @@
 .mostrandoPessoas{
     overflow: auto;
     max-height: 50vh;
+    word-break: break-word;
 }
 .bg-blue-grey-lighten-5{
     background-color: #eceff1;
