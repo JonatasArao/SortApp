@@ -7,9 +7,9 @@ namespace SortApp {
         let cadastrarPessoa = < HTMLButtonElement > document.getElementById("cadastrarPessoa");
         // Ação - Cadastrar Pessoa
         cadastrarPessoa.addEventListener('click', function () {
-            var nome = ( < HTMLInputElement > document.getElementById('nomePessoa')).value;
-            var idade = ( < HTMLInputElement > document.getElementById('idadePessoa')).value;
-            var perfil = ( < HTMLTextAreaElement > document.getElementById('perfilPessoa')).value;
+            let nome = ( < HTMLInputElement > document.getElementById('nomePessoa')).value;
+            let idade = ( < HTMLInputElement > document.getElementById('idadePessoa')).value;
+            let perfil = ( < HTMLTextAreaElement > document.getElementById('perfilPessoa')).value;
             let pessoa = new Pessoa(nome, parseInt(idade), perfil);
             Sorteador.addPessoa(pessoa);
         });
@@ -31,29 +31,73 @@ namespace SortApp {
             let pessoas = Sorteador.getPessoas();
             if (pessoas.length > 0) {
                 let listaPessoas = '';
-                pessoas.forEach(function (pessoa) {
+                pessoas.forEach(function (pessoa, index) {
                     listaPessoas += `
-                <a href="#" class="list-group-item list-group-item-action">
+                <div class="list-group-item list-group-item-action">
                     <div class="d-flex w-100 justify-content-between">
                         <h5 class="mb-1">` + pessoa.getNome() + `</h5>
                         <small class="text-muted">` + pessoa.getIdade() + ` ano(s)</small>
                     </div>
-                    <p class="mb-1">
-                        ` + pessoa.getPerfil() + `
-                    </p>
-                </a>
+                    <div class="d-flex w-100 justify-content-between">
+                        <p class="mb-1">
+                            ` + pessoa.getPerfil() + `
+                        </p>
+                        <div>
+                            <button type="button" data-dismiss="modal" data-toggle="modal" data-target="#editarModalPessoa" class="btn btn-primary rounded-circle editarModalPessoas" value=`+ index +`><i class="fas fa-pen"></i></i></button>
+                            <button type="button" data-dismiss="modal" class="btn btn-danger rounded-circle excluirPessoas" value=`+ index +`><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+                </div>
                `
                 })
                 mostrandoPessoas.innerHTML = listaPessoas;
             }else{
                 mostrandoPessoas.innerHTML = `
-                <a href="#" class="list-group-item list-group-item-action">
+                <div class="list-group-item list-group-item-action">
                     <div class="d-flex w-100 justify-content-between">
                         <h5 class="mb-1">Cadastre pelo menos uma pessoa</h5>
                     </div>
-                </a>
+                </div>
                 `;
             }
+            
+            // Botão - Excluir Pessoas
+            let excluirPessoas = document.getElementsByClassName('excluirPessoas');
+            // Ação - Excluir Pessoas
+            for(let i = 0; i < excluirPessoas.length; i++){
+                excluirPessoas[i].addEventListener('click',function(this){
+                    Sorteador.removePessoa(parseInt(this.value));
+                })
+            }
+
+            // Botão para abrir modal EditarPessoas
+            let editarModalPessoas = document.getElementsByClassName('editarModalPessoas');
+            for(let i = 0; i < editarModalPessoas.length; i++){
+                editarModalPessoas[i].addEventListener('click',function(this){
+                    let btnEditarPessoas = < HTMLButtonElement > document.getElementById('editarPessoa');
+                    let nomeEditarPessoa = < HTMLButtonElement > document.getElementById('nomeEditarPessoa');
+                    let idadeEditarPessoa = < HTMLButtonElement > document.getElementById('idadeEditarPessoa');
+                    let perfilEditarPessoa = < HTMLButtonElement > document.getElementById('perfilEditarPessoa');
+                    let pessoaEditada = Sorteador.getPessoas()[i];
+
+                    nomeEditarPessoa.value = pessoaEditada.getNome();
+                    idadeEditarPessoa.value = pessoaEditada.getIdade().toString();
+                    perfilEditarPessoa.value = pessoaEditada.getPerfil();
+                    
+                    btnEditarPessoas.value = this.value;
+                })
+            }
+        });
+        
+        let editarPessoas = < HTMLButtonElement > document.getElementById('editarPessoa');
+        editarPessoas.addEventListener('click', function(){
+            let index = parseInt(( < HTMLButtonElement > document.getElementById('editarPessoa') ).value);
+            let nome = ( < HTMLButtonElement > document.getElementById('nomeEditarPessoa') ).value;
+            let idade = ( < HTMLButtonElement > document.getElementById('idadeEditarPessoa') ).value;
+            let perfil = ( < HTMLButtonElement > document.getElementById('perfilEditarPessoa') ).value;
+
+            let pessoa = new Pessoa(nome, parseInt(idade), perfil);
+            Sorteador.editPessoa(index,pessoa)
         });
 
         // Botão - Salvar Pessoas

@@ -6,10 +6,19 @@ var SortApp;
             this.pessoas = [];
         }
         Sorteio.prototype.getPessoas = function () {
+            this.pessoas.sort(function (a, b) {
+                return a.getNome() < b.getNome() ? -1 : (a.getNome() > b.getNome()) ? 1 : 0;
+            });
             return this.pessoas;
         };
         Sorteio.prototype.addPessoa = function (pessoa) {
             this.pessoas.push(pessoa);
+        };
+        Sorteio.prototype.removePessoa = function (index) {
+            this.pessoas.splice(index, 1);
+        };
+        Sorteio.prototype.editPessoa = function (index, pessoa) {
+            this.pessoas[index] = pessoa;
         };
         Sorteio.prototype.sortearPessoa = function () {
             var min = 0;

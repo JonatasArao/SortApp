@@ -77,6 +77,40 @@
             </div>
         </div>
 
+        <div class="modal fade" id="editarModalPessoa" tabindex="-1" role="dialog" aria-labelledby="editarPessoaTitle"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editarPessoaTitle">Atualizar Pessoa</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="nomeEditarPessoa">Nome</label>
+                                <input type="text" class="form-control" id="nomeEditarPessoa">
+                            </div>
+                            <div class="form-group">
+                                <label for="idadeEditarPessoa">Idade</label>
+                                <input type="number" class="form-control" id="idadeEditarPessoa">
+                            </div>
+                            <div class="form-group">
+                                <label for="perfilEditarPessoa">Perfil</label>
+                                <textarea class="form-control" id="perfilEditarPessoa" rows="4"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal" id="editarPessoa">Atualizar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="modal fade" id="mostrarPessoas" tabindex="-1" role="dialog" aria-labelledby="mostrarPessoasTitle"
             aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">

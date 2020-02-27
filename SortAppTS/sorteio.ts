@@ -3,11 +3,22 @@ namespace SortApp{
         private pessoas : Array<Pessoa> = [];
 
         getPessoas() : Array<Pessoa> {
+            this.pessoas.sort(function(a, b) {
+                return a.getNome() < b.getNome() ? -1 : (a.getNome() > b.getNome()) ? 1 : 0;
+            });
             return this.pessoas;
         }
 
         addPessoa( pessoa : Pessoa ) : void {
             this.pessoas.push(pessoa);
+        }
+
+        removePessoa (index : number ) : void {
+            this.pessoas.splice(index, 1);
+        }
+
+        editPessoa ( index : number, pessoa : Pessoa) : void {
+            this.pessoas[index] = pessoa;
         }
 
         sortearPessoa () : Pessoa {
