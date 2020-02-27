@@ -1,4 +1,4 @@
-.mostrandoPessoas{
+.mostrandoPessoas, .mostrandoSaves{
     overflow: auto;
     max-height: 50vh;
     word-break: break-word;

@@ -17,6 +17,9 @@ var SortApp;
         Sorteio.prototype.removePessoa = function (index) {
             this.pessoas.splice(index, 1);
         };
+        Sorteio.prototype.removeTodasPessoas = function () {
+            this.pessoas = [];
+        };
         Sorteio.prototype.editPessoa = function (index, pessoa) {
             this.pessoas[index] = pessoa;
         };

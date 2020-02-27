@@ -17,6 +17,10 @@ namespace SortApp{
             this.pessoas.splice(index, 1);
         }
 
+        removeTodasPessoas () : void {
+            this.pessoas = [];
+        }
+
         editPessoa ( index : number, pessoa : Pessoa) : void {
             this.pessoas[index] = pessoa;
         }

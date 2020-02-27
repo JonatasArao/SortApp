@@ -20,24 +20,24 @@
 
 <body class="bg-blue-grey-lighten-5">
 
-    <div class="py-3 bg-dark container-fluid">
+    <div class="py-3 bg-dark container-fluid shadow-sm">
         <a class="text-decoration-none" href="#">
             <h2 class="text-white text-center">SortApp</h2>
         </a>
     </div>
 
-    <section class="mt-3 container">
+    <section class="mt-4 container">
 
         <div class="row">
-            <button type="button" class="rounded-pill mx-auto btn btn-secondary btn-acao text-center" data-toggle="modal" id="btnCadastrarModalPessoa" data-target="#cadastrarModalPessoa">
+            <button type="button" class="shadow rounded-pill mx-auto btn btn-secondary btn-acao text-center" data-toggle="modal" id="btnCadastrarModalPessoa" data-target="#cadastrarModalPessoa">
                 <i class="fas fa-user-plus"></i>
                 <p>Adicionar<br>Pessoa</p>
             </button>
-            <button type="button" class="rounded-pill mx-auto btn btn-secondary btn-acao text-center" data-toggle="modal" id="btnMostrarPessoas" data-target="#mostrarPessoas">
+            <button type="button" class="shadow rounded-pill mx-auto btn btn-secondary btn-acao text-center" data-toggle="modal" id="btnMostrarPessoas" data-target="#mostrarPessoas">
                 <i class="fas fa-users"></i>
                 <p>Ver<br>Pessoas</p>
             </button>
-            <button type="button" class="rounded-pill mx-auto btn btn-secondary btn-acao text-center" data-toggle="modal" id="btnSorteio" data-target="#sorteio">
+            <button type="button" class="shadow rounded-pill mx-auto btn btn-secondary btn-acao text-center" data-toggle="modal" id="btnSorteio" data-target="#sorteio">
                 <i class="fas fa-envelope-open-text"></i>
                 <p>Sortear<br>Pessoa</p>
             </button>  
@@ -57,21 +57,21 @@
                         <form>
                             <div class="form-group">
                                 <label for="nomePessoa">Nome</label>
-                                <input type="text" class="form-control" id="nomePessoa">
+                                <input type="text" class="form-control shadow-sm" id="nomePessoa">
                             </div>
                             <div class="form-group">
                                 <label for="idadePessoa">Idade</label>
-                                <input type="number" class="form-control" id="idadePessoa">
+                                <input type="number" class="form-control shadow-sm" id="idadePessoa">
                             </div>
                             <div class="form-group">
                                 <label for="perfilPessoa">Perfil</label>
-                                <textarea class="form-control" id="perfilPessoa" rows="4"></textarea>
+                                <textarea class="form-control shadow-sm" id="perfilPessoa" rows="4"></textarea>
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal" id="cadastrarPessoa">Adicionar</button>
+                        <button type="button" class="btn shadow-sm btn-secondary" data-dismiss="modal">Fechar</button>
+                        <button type="button" class="btn shadow-sm btn-danger" data-dismiss="modal" id="cadastrarPessoa">Adicionar</button>
                     </div>
                 </div>
             </div>
@@ -91,21 +91,21 @@
                         <form>
                             <div class="form-group">
                                 <label for="nomeEditarPessoa">Nome</label>
-                                <input type="text" class="form-control" id="nomeEditarPessoa">
+                                <input type="text" class="form-control shadow-sm" id="nomeEditarPessoa">
                             </div>
                             <div class="form-group">
                                 <label for="idadeEditarPessoa">Idade</label>
-                                <input type="number" class="form-control" id="idadeEditarPessoa">
+                                <input type="number" class="form-control shadow-sm" id="idadeEditarPessoa">
                             </div>
                             <div class="form-group">
                                 <label for="perfilEditarPessoa">Perfil</label>
-                                <textarea class="form-control" id="perfilEditarPessoa" rows="4"></textarea>
+                                <textarea class="form-control shadow-sm" id="perfilEditarPessoa" rows="4"></textarea>
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal" id="editarPessoa">Atualizar</button>
+                        <button type="button" class="btn shadow-sm btn-secondary" data-dismiss="modal">Fechar</button>
+                        <button type="button" class="btn shadow-sm btn-danger" data-dismiss="modal" id="editarPessoa">Atualizar</button>
                     </div>
                 </div>
             </div>
@@ -126,9 +126,54 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" id="btnCarregarPessoas" class="btn btn-primary" data-dismiss="modal">Carregar</button>
-                        <button type="button" id="btnSalvarPessoas" class="btn btn-success" data-dismiss="modal">Salvar</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <button type="button" data-toggle="modal" data-target="#carregarPessoas" id="btnModalCarregarPessoas" class="btn shadow-sm btn-primary" data-dismiss="modal">Listas Salvas</button>
+                        <button type="button" id="btnExcluirTodasPessoas" class="btn shadow-sm btn-danger" data-dismiss="modal">Excluir Todos</button>
+                        <button type="button" data-toggle="modal" data-target="#salvarPessoas" id="btnModalSalvarPessoas" class="btn shadow-sm btn-success" data-dismiss="modal">Nova Lista</button>
+                        <button type="button" class="btn shadow-sm btn-secondary" data-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="salvarPessoas" tabindex="-1" role="dialog" aria-labelledby="salvarPessoasTitle"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="salvarPessoasTitle">Salvando Nova Lista de Pessoas</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="nomeLista">Nome da Lista</label>
+                            <input type="text" class="form-control shadow-sm" id="nomeLista">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="btnSalvarPessoas" class="btn shadow-sm btn-success" data-dismiss="modal">Salvar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="carregarPessoas" tabindex="-1" role="dialog" aria-labelledby="carregarPessoasTitle"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="carregarPessoasTitle">Lista de Pessoas</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body mostrandoSaves">
+                        <div class="list-group" id="mostrandoSaves">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn shadow-sm btn-secondary" data-dismiss="modal">Fechar</button>
                     </div>
                 </div>
             </div>
@@ -148,7 +193,7 @@
                         <h1 class="text-center display-4" id="pessoaSorteada"></h1>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <button type="button" class="btn shadow-sm btn-secondary" data-dismiss="modal">Fechar</button>
                     </div>
                 </div>
             </div>
